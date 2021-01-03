@@ -7,7 +7,7 @@ module Program.Mighty.Resource (
   ) where
 
 import Control.Exception
-import System.Posix
+import System.PosixCompat
 
 ----------------------------------------------------------------
 

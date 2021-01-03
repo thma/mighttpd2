@@ -4,7 +4,7 @@ module Program.Mighty.Network (
 
 import Control.Monad
 import System.Exit
-import System.Posix
+import System.PosixCompat
 
 -- | Run a program detaching its terminal.
 daemonize :: IO () -> IO ()

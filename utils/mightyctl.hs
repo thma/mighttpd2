@@ -3,8 +3,8 @@ module Main where
 import Data.List
 import System.Environment
 import System.Exit
-import System.Posix.Signals
-import System.Posix.Types
+import System.PosixCompat.Signals
+import System.PosixCompat.Types
 
 import Program.Mighty (getMightyPid, sigStop, sigReload, sigRetire, sigInfo)
 

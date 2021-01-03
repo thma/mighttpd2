@@ -9,7 +9,7 @@ import Data.Bits
 import Data.Time (formatTime)
 import Data.Time.Clock.POSIX
 import System.Directory
-import System.Posix.Files
+import System.PosixCompat.Files
 import Text.Printf
 
 #if MIN_VERSION_time(1,5,0)

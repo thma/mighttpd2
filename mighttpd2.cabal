@@ -1,5 +1,5 @@
 Name:                   mighttpd2
-Version:                4.0.0
+Version:                4.0.1
 Author:                 Kazu Yamamoto <kazu@iij.ad.jp>
 Maintainer:             Kazu Yamamoto <kazu@iij.ad.jp>
 License:                BSD3
@@ -62,7 +62,7 @@ Library
                       , streaming-commons
                       , split
                       , text
-                      , unix
+                      , unix-compat >= 0.5.2.1
                       , unix-time
                       , unordered-containers
                       , wai >= 3.2 && < 3.3
@@ -102,7 +102,7 @@ Executable mighty
                       , network
                       , conduit-extra
                       , transformers
-                      , unix
+                      , unix-compat >= 0.5.2.1
                       , streaming-commons
                       , time-manager
                       , wai >= 3.2 && < 3.3
@@ -131,7 +131,7 @@ Executable mighty-mkindex
                       , directory
                       , old-locale
                       , time
-                      , unix
+                      , unix-compat >= 0.5.2.1
 
 Executable mightyctl
   Default-Language:     Haskell2010
@@ -139,7 +139,7 @@ Executable mightyctl
   Main-Is:              mightyctl.hs
   GHC-Options:          -Wall
   Build-Depends:        base >= 4 && < 5
-                      , unix
+                      , unix-compat >= 0.5.2.1
                       , mighttpd2
   if impl(ghc >= 8)
     Default-Extensions:  Strict StrictData

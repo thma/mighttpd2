@@ -9,7 +9,7 @@ module Program.Mighty.Signal (
   ) where
 
 import Control.Monad
-import System.Posix
+import System.PosixCompat
 
 ----------------------------------------------------------------
 

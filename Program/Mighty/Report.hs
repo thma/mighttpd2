@@ -26,7 +26,7 @@ import Network.Wai.Handler.Warp (InvalidRequest)
 import Network.Wai.Handler.Warp.Internal (TimeoutThread(..))
 import System.IO
 import System.IO.Error (ioeGetErrorType)
-import System.Posix (getProcessID)
+import System.PosixCompat (getProcessID)
 
 import Program.Mighty.ByteString
 

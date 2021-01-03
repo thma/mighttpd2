@@ -10,7 +10,7 @@ import Control.Monad (when)
 import Data.Version (showVersion)
 import Network.Wai.Application.Classic hiding ((</>))
 import System.Directory (getCurrentDirectory)
-import System.Environment (getArgs)
+import System.Environment (getArgs, lookupEnv)
 import System.Exit (exitFailure)
 import System.FilePath (addTrailingPathSeparator, isAbsolute, normalise, (</>))
 import System.IO
@@ -45,12 +45,13 @@ main = do
     eachCase args
       | n == 0 = do
           root <- amIrootUser
-          let opt | root      = (defaultOption svrnm) { opt_port = 80 }
-                  | otherwise = defaultOption svrnm
+          option <- getDefaultOption svrnm
+          let opt | root      = option { opt_port = 80 }
+                  | otherwise = option
           dir <- getCurrentDirectory
           let dst = fromString . addTrailingPathSeparator $ dir
               route = [Block ["*"] [RouteFile "/" dst]]
-          return (opt, route)
+          return (opt, route)   
       | n == 2 = do
           let config_file = args !! 0
           routing_file <- getAbsoluteFile (args !! 1)
@@ -106,3 +107,17 @@ reportFileName opt
   where
     rfile = opt_report_file opt
     port = opt_port opt
+
+-- | obtain the default config and apply windows specific modifications
+getDefaultOption :: String -> IO Option
+getDefaultOption svrnm = do
+#ifndef mingw32_HOST_OS
+    return $ defaultOption svrnm
+#else
+    print svrnm
+    maybeTmpDir <- lookupEnv "TMP"
+    let tmpDir = case maybeTmpDir of
+            Nothing  -> "C:\\temp"
+            Just dir -> dir
+    return (defaultOption svrnm) {opt_report_file = tmpDir}
+#endif

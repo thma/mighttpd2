@@ -17,8 +17,8 @@ import Network.Wai.Logger
 import System.Exit (ExitCode(..), exitSuccess)
 import System.IO
 import System.IO.Error (ioeGetErrorString)
-import System.Posix (exitImmediately, Handler(..), getProcessID, setFileMode)
-import System.Posix.Signals (sigCHLD)
+import System.PosixCompat (exitImmediately, Handler(..), getProcessID, setFileMode)
+import System.PosixCompat.Signals (sigCHLD)
 import qualified System.TimeManager as T
 
 import Program.Mighty
